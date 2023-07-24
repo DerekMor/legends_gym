@@ -35,7 +35,23 @@
     {% endif %}
 
     {% block page_header %}
+    <header class="bg-dark py-3">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Logo -->
+                <div class="col-auto">
+                    <a href="#">
+                        <img src="media/logo.png" alt="Logo" width="40" height="40">
+                    </a>
+                </div>
 
+                <!-- Main Header -->
+                <div class="col">
+                    <h3 class="text-light">Legends Gym</h3>
+                </div>
+            </div>
+        </div>
+    </header>
     {% endblock %}
 
     {% block content %}
