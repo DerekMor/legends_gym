@@ -40,7 +40,7 @@
             <div class="row align-items-center">
                 <!-- Logo -->
                 <div class="col-auto">
-                    <a href="#">
+                    <a href="{% url 'home' %}">
                         <img src="media/logo.png" alt="Logo" width="40" height="40">
                     </a>
                 </div>
@@ -48,6 +48,15 @@
                 <!-- Main Header -->
                 <div class="col">
                     <h3 class="text-light">Legends Gym</h3>
+                </div>
+
+                <!-- Search Function -->
+                <div class="col-auto">
+                    <form class="form-inline my-2 my-lg-0" method="GET" action="/search">
+                        <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search"
+                            aria-label="Search">
+                        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+                    </form>
                 </div>
             </div>
         </div>
