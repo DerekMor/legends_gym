@@ -3,3 +3,17 @@
     height: 80px;
     border-radius: 5%;
 }
+
+/* Hide original icons on small screens */
+@media (max-width: 767px) {
+    .header-icons {
+        display: none;
+    }
+}
+
+/* Show original icons on larger screens */
+@media (min-width: 768px) {
+    .mobile-icons {
+        display: none;
+    }
+}
