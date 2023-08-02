@@ -38,12 +38,12 @@
 
     {% block page_header %}
     <header class="bg-dark py-3">
-        <div class="container">
+        <div class="container mobile-center">
             <div class="row align-items-center">
                 <!-- Logo -->
                 <div class="col-auto">
                     <a href="{% url 'home' %}">
-                        <img src="media/malogo.jpg" class="logo header-icons" alt="Logo">
+                        <img src="media/malogo.jpg" class="logo main-icon" alt="Logo">
                     </a>
                 </div>
 
@@ -95,10 +95,10 @@
                 </div>
                 {% include 'includes/mobile_header.html' %}
             </div>
-            {% include 'includes/nav_bar.html' %}
 
         </div>
     </header>
+
     {% endblock %}
 
     {% block content %}

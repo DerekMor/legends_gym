@@ -1,19 +1,53 @@
+a:hover {
+    text-decoration: none;
+}
+
 .logo {
     width: 100px;
     height: 80px;
     border-radius: 5%;
 }
 
+
 /* Hide original icons on small screens */
-@media (max-width: 767px) {
+@media (max-width: 991.98px) {
     .header-icons {
         display: none;
+    }
+
+    .mobile-icons {
+        display: inline-flex;
+        /* Show the mobile icons in a row */
     }
 }
 
 /* Show original icons on larger screens */
-@media (min-width: 768px) {
+@media (min-width: 992px) {
     .mobile-icons {
         display: none;
     }
+}
+
+@media (max-width: 768px) {
+    .mobile-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+
+.mobile-icons .nav-link {
+    color: white;
+    font-size: 18px;
+    margin-left: 15px;
+}
+
+body {
+    background-image: url('../../media/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    top: 50px;
 }
