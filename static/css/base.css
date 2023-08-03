@@ -25,6 +25,8 @@ a:hover {
 @media (min-width: 992px) {
     .mobile-icons {
         display: none;
+        align-items: center;
+        margin-right: 10px;
     }
 }
 
@@ -36,11 +38,15 @@ a:hover {
     }
 }
 
+.mobile-icons {
+    align-items: center;
+}
 
 .mobile-icons .nav-link {
     color: white;
     font-size: 18px;
-    margin-left: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 body {
