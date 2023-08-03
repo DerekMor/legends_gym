@@ -17,7 +17,8 @@ a:hover {
 
     .mobile-icons {
         display: inline-flex;
-        /* Show the mobile icons in a row */
+        justify-content: center;
+        align-items: center;
     }
 }
 
@@ -28,18 +29,6 @@ a:hover {
         align-items: center;
         margin-right: 10px;
     }
-}
-
-@media (max-width: 768px) {
-    .mobile-center {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-}
-
-.mobile-icons {
-    align-items: center;
 }
 
 .mobile-icons .nav-link {

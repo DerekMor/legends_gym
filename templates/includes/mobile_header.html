@@ -10,7 +10,7 @@
 
         <!-- Mobile Navigation Links -->
         <div class="collapse navbar-collapse" id="mobileNavbar">
-            <ul class="navbar-nav mr-auto d-inline-flex">
+            <ul class="navbar-nav mr-auto">
                 <!-- Products Dropdown -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button"
@@ -51,50 +51,52 @@
                 </li>
             </ul>
         </div>
-        <ul class="navbar-nav ml-auto d-inline-flex d-lg-none mobile-icons">
-            <!-- Search Dropdown -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-search"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="searchDropdown">
-                    <form class="form-inline my-2 my-lg-0" method="GET" action="/search">
-                        <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search"
-                            aria-label="Search">
-                        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-                    </form>
-                </div>
-            </li>
+        <div class="mobile-icons">
+            <ul class="navbar-nav ml-auto d-lg-none">
+                <!-- Search Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-search"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="searchDropdown">
+                        <form class="form-inline my-2 my-lg-0" method="GET" action="/search">
+                            <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search"
+                                aria-label="Search">
+                            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
+                </li>
 
-            <!-- Account Dropdown -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-user"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="accountDropdown">
-                    {% if user.is_authenticated %}
-                    <a class="dropdown-item" href="#">Profile</a>
-                    <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
-                    {% else %}
-                    <a class="dropdown-item" href="{% url 'account_login' %}">Login</a>
-                    <a class="dropdown-item" href="{% url 'account_signup' %}">Register</a>
-                    {% endif %}
-                </div>
-            </li>
+                <!-- Account Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="accountDropdown">
+                        {% if user.is_authenticated %}
+                        <a class="dropdown-item" href="#">Profile</a>
+                        <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
+                        {% else %}
+                        <a class="dropdown-item" href="{% url 'account_login' %}">Login</a>
+                        <a class="dropdown-item" href="{% url 'account_signup' %}">Register</a>
+                        {% endif %}
+                    </div>
+                </li>
 
-            <!-- Shopping Cart Icon -->
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-shopping-cart"></i>
-                    {% if grand_total %}
-                    <span class="badge badge-pill badge-primary">€{{ grand_total|floatformat:2 }}</span>
-                    {% else %}
-                    <span class="badge badge-pill badge-primary">€0.00</span>
-                    {% endif %}
-                </a>
-            </li>
-        </ul>
+                <!-- Shopping Cart Icon -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-shopping-cart"></i>
+                        {% if grand_total %}
+                        <span class="badge badge-pill badge-primary">€{{ grand_total|floatformat:2 }}</span>
+                        {% else %}
+                        <span class="badge badge-pill badge-primary">€0.00</span>
+                        {% endif %}
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
