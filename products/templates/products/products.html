@@ -4,11 +4,21 @@
 
 
 {% block content %}
-<div class="container">
+<div class="container mt-4">
     <div class="row">
-        <div class="col">
-            {{ products }}
+        {% for product in products %}
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <!-- Adjusted column classes -->
+            <div class="card h-100">
+                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">{{ product.description }}</p>
+                    <h6 class="card-subtitle mb-2 text-muted">Price: €{{ product.price }}</h6>
+                </div>
+            </div>
         </div>
+        {% endfor %}
     </div>
 </div>
 
