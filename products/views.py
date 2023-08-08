@@ -27,6 +27,16 @@ def all_products(request):
             if category_filter:
                 products = products.filter(category__name=category_filter)
 
+        sort_by = request.GET.get('sort', 'name')
+        direction = request.GET.get('direction', 'asc')
+
+        if direction == 'asc':
+            sort_by = sort_by
+        elif direction == 'desc':
+            sort_by = f'-{sort_by}'
+
+        products = products.order_by(sort_by)
+
     context = {
         'products': products,
         'search_term': query,
