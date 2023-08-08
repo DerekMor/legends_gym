@@ -9,6 +9,7 @@ def all_products(request):
 
     products = Product.objects.all()
     query = None
+    category_filter = None
 
     if request.GET:
         if 'q' in request.GET:
@@ -21,9 +22,15 @@ def all_products(request):
                 description__icontains=query)
             products = products.filter(queries)
 
+        if 'category' in request.GET:
+            category_filter = request.GET['category']
+            if category_filter:
+                products = products.filter(category__name=category_filter)
+
     context = {
         'products': products,
         'search_term': query,
+        'category_filter': category_filter,
     }
 
     return render(request, 'products/products.html', context)

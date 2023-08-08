@@ -19,10 +19,10 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="productsDropdown">
                         <a class="dropdown-item" href="{% url 'products' %}">All Products</a>
-                        <a class="dropdown-item" href="#">Clothing</a>
-                        <a class="dropdown-item" href="#">Gloves</a>
-                        <a class="dropdown-item" href="#">Pads</a>
-                        <a class="dropdown-item" href="#">Protective Gear</a>
+                        <a class="dropdown-item" href="{% url 'products' %}?category=clothes">Clothing</a>
+                        <a class="dropdown-item" href="{% url 'products' %}?category=gloves">Gloves</a>
+                        <a class="dropdown-item" href="{% url 'products' %}?category=pads">Pads</a>
+                        <a class="dropdown-item" href="{% url 'products' %}?category=protective">Protective Gear</a>
                     </div>
                 </li>
 
