@@ -88,9 +88,9 @@
                 <!-- Shopping Cart Icon -->
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'view_cart' %}">
-                        <i class="fas fa-shopping-cart"></i>
-                        {% if grand_total %}
-                        <span class="badge badge-pill badge-primary">€{{ grand_total|floatformat:2 }}</span>
+                        <i class="fas fa-shopping-cart"></i> Shopping Cart
+                        {% if cart_total %}
+                        <span class="badge badge-pill badge-primary">€{{ cart_total|floatformat:2 }}</span>
                         {% else %}
                         <span class="badge badge-pill badge-primary">€0.00</span>
                         {% endif %}

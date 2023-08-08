@@ -84,8 +84,8 @@
                 <div class="col-auto header-icons">
                     <a class="btn btn-outline-light" href="{% url 'view_cart' %}">
                         <i class="fas fa-shopping-cart"></i> Shopping Cart
-                        {% if grand_total %}
-                        <span class="badge badge-pill badge-primary">€{{ grand_total|floatformat:2 }}</span>
+                        {% if cart_total %}
+                        <span class="badge badge-pill badge-primary">€{{ cart_total|floatformat:2 }}</span>
                         {% else %}
                         <span class="badge badge-pill badge-primary">€0.00</span>
                         {% endif %}
