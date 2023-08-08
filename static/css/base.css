@@ -68,3 +68,11 @@ body {
     height: auto;
     aspect-ratio: 5/4;
 }
+
+.cart-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
