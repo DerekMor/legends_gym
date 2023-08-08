@@ -82,7 +82,7 @@
 
                 <!-- Shopping Cart Icon -->
                 <div class="col-auto header-icons">
-                    <a class="btn btn-outline-light" href="#">
+                    <a class="btn btn-outline-light" href="{% url 'view_cart' %}">
                         <i class="fas fa-shopping-cart"></i> Shopping Cart
                         {% if grand_total %}
                         <span class="badge badge-pill badge-primary">€{{ grand_total|floatformat:2 }}</span>

@@ -87,7 +87,7 @@
 
                 <!-- Shopping Cart Icon -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{% url 'view_cart' %}">
                         <i class="fas fa-shopping-cart"></i>
                         {% if grand_total %}
                         <span class="badge badge-pill badge-primary">€{{ grand_total|floatformat:2 }}</span>
