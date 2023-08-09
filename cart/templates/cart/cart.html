@@ -22,14 +22,27 @@
                 {% for item in cart_items %}
                 <tr>
                     <td>{{ item.product.name }}</td>
-                    <td>{{ item.quantity }}</td>
+                    <td>
+                        <form method="post" action="{% url 'update_cart' item.product.id %}">
+                            {% csrf_token %}
+                            <input type="number" name="quantity" value="{{ item.quantity }}" min="1">
+                            <button type="submit" class="btn btn-link">Update</button>
+                        </form>
+                    </td>
                     <td>€{{ item.product.price }}</td>
                     <td>€{{ item.total }}</td>
+                    <td>
+                        <form method="post" action="{% url 'remove_from_cart' item.product.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-link">Remove</button>
+                        </form>
+                    </td>
                 </tr>
                 {% endfor %}
                 <tr>
                     <td colspan="3"><strong>Total:</strong></td>
                     <td>€{{ cart_total }}</td>
+                    <td></td>
                 </tr>
             </tbody>
         </table>
