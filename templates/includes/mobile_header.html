@@ -33,8 +33,10 @@
                         Training Plans
                     </a>
                     <div class="dropdown-menu" aria-labelledby="trainingDropdown">
-                        <a class="dropdown-item" href="#">3 Month Starter Plan</a>
-                        <a class="dropdown-item" href="#">Summer Fit</a>
+                        <a class="dropdown-item" href="{% url 'plans_products' %}">All Plans</a>
+                        <a class="dropdown-item" href="{% url 'single_product' 22 %}">3 Month Starter Plan</a>
+                        <a class="dropdown-item" href="{% url 'single_product' 23 %}">Summer Fit</a>
+                        <a class="dropdown-item" href="{% url 'single_product' 21 %}">6 Month Membership Deal</a>
                     </div>
                 </li>
 
@@ -42,11 +44,11 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="membershipDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Membership
+                        Information
                     </a>
                     <div class="dropdown-menu" aria-labelledby="membershipDropdown">
-                        <a class="dropdown-item" href="#">Full Gym Membership</a>
-                        <a class="dropdown-item" href="#">Class Only Membership</a>
+                        <a class="dropdown-item" href="#">Facebook Page</a>
+                        <a class="dropdown-item" href="#">Newsletter</a>
                     </div>
                 </li>
             </ul>

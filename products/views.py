@@ -27,6 +27,9 @@ def all_products(request):
             if category_filter:
                 products = products.filter(category__name=category_filter)
 
+            if category_filter == 'plans':
+                products = products.exclude(category__name='plans')
+
         sort_by = request.GET.get('sort', 'name')
         direction = request.GET.get('direction', 'asc')
 
@@ -55,3 +58,14 @@ def single_product(request, pk):
     }
 
     return render(request, 'products/single_product.html', context)
+
+
+def plans_products(request):
+    plans_products = Product.objects.filter(category__name='plans')
+
+    context = {
+        'products': plans_products,
+        'category_filter': 'plans',
+    }
+
+    return render(request, 'products/products.html', context)
