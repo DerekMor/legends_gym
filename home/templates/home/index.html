@@ -4,6 +4,20 @@
 
 
 {% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col d-flex justify-content-center align-items-center mt-5">
+            <a href="{% url 'products' %}" class="btn btn-primary btn-lg mt-4 bg-dark text-white rounded-pill main-button">View All
+                Our Products</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col d-flex justify-content-center align-items-center mt-3">
+            <a href="{% url 'plans_products' %}"
+                class="btn btn-primary btn-lg mt-4 bg-dark text-white rounded-pill main-button">View Our Training Plans</a>
+        </div>
+    </div>
+</div>
 
 
 {% endblock %}
