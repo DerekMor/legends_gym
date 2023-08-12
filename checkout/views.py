@@ -1,14 +1,23 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .forms import CheckoutForm
 from profiles.models import Customer
 from .models import Order
+from products.models import Product
 
 
 def checkout(request):
     user = request.user
     initial_data = {}
-    cart_items = []
+    cart_items = {}
+    cart_total = 0
+
+    cart = request.session.get('cart', {})
+    cart_items = {int(product_id): quantity for product_id,
+                  quantity in cart_items.items()}
+    if 'cart' in request.session:
+        cart_items = request.session['cart']
+        print("Cart Items:", cart_items)
 
     if user.is_authenticated:
         try:
@@ -27,8 +36,10 @@ def checkout(request):
         except Customer.DoesNotExist:
             pass
 
-    if 'cart' in request.session:
-        cart_items = request.session['cart']
+    for product_id, quantity in cart.items():
+        product = get_object_or_404(Product, id=product_id)
+        subtotal = product.price * quantity
+        cart_total += subtotal
 
     if request.method == 'POST':
         form = CheckoutForm(request.POST, initial=initial_data)
@@ -77,6 +88,7 @@ def checkout(request):
 
     context = {
         'form': form,
-        'cart_items': cart_items,
+        'cart_items': list(cart_items.values()),
+        'cart_total': cart_total,
     }
     return render(request, 'checkout/checkout.html', context)

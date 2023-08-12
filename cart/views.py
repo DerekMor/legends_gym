@@ -42,13 +42,12 @@ def remove_from_cart(request, product_id):
     str_product_id = str(product_id)
 
     if str_product_id in cart:
-        print('debug. if block:', cart)
         del cart[str_product_id]
         request.session['cart'] = cart
         request.session.save()
         messages.success(request, "Item removed from your cart.")
     else:
-        print('debug. else block:', cart)
+        
         messages.error(request, "Item not found in your cart.")
 
     return redirect('view_cart')
