@@ -116,3 +116,33 @@ body {
     margin-top: 10px;
     text-decoration: none;
 }
+
+.checkout-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.order-details {
+    width: 60%;
+    padding: 20px;
+}
+
+.order-summary {
+    width: 35%;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .checkout-container {
+        flex-direction: column;
+    }
+
+    .order-summary {
+        margin-top: 20px;
+        width: 100%;
+    }
+}

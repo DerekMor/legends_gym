@@ -1,11 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container">
-    <h2>Checkout</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Place Order</button>
-    </form>
+    <div class="checkout-container">
+        <div class="order-details">
+            <h2>Order Details</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{form.as_p}}
+            </form>
+        </div>
+        <div class="order-summary">
+            <h2>Order Summary</h2>
+
+            <ul>
+
+                {% for item in cart_items %}
+                <li>
+                    Product: {{ item.product.name }} - Quantity: {{ item.quantity }} - Price: €{{
+                    item.product.price }}
+                </li>
+                {% endfor %}
+            </ul>
+            <p>Total: €{{ cart_total }}</p>
+            <a href="{% url 'view_cart' %}" class="btn btn-secondary">Return to Cart</a>
+            <a href="#" class="btn btn-primary">Complete Order - €{{ cart_total }}</a>
+        </div>
+    </div>
 </div>
 {% endblock %}

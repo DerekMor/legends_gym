@@ -8,6 +8,7 @@ from .models import Order
 def checkout(request):
     user = request.user
     initial_data = {}
+    cart_items = []
 
     if user.is_authenticated:
         try:
@@ -26,12 +27,16 @@ def checkout(request):
         except Customer.DoesNotExist:
             pass
 
+    if 'cart' in request.session:
+        cart_items = request.session['cart']
+
     if request.method == 'POST':
         form = CheckoutForm(request.POST, initial=initial_data)
         if form.is_valid():
             order = form.save(commit=False)
 
             if user.is_authenticated:
+
                 order.customer = customer
                 order.save()
 
@@ -72,5 +77,6 @@ def checkout(request):
 
     context = {
         'form': form,
+        'cart_items': cart_items,
     }
     return render(request, 'checkout/checkout.html', context)
