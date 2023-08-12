@@ -90,5 +90,7 @@ def checkout(request):
         'form': form,
         'cart_items': list(cart_items.values()),
         'cart_total': cart_total,
+        'stripe_public_key': 'pk_test_51NePQVFgmCeLvFA2hvxuZ4LK9xdxjqvz7teTiNwexwxIeDRwYFVI6O8RHRVeqQnelSkopMiNsnZekpNUGz5qRlnj00DE9yoyc5',
+        'client_secret': 'test client secret'
     }
     return render(request, 'checkout/checkout.html', context)
