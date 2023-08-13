@@ -18,6 +18,20 @@ var style = {
     }
 };
 var card = elements.create('card', { style: style });
-console.log("Before card.mount");
 card.mount('#card-element');
-console.log("After card.mount");
+
+
+card.addEventListener("change", function (event) {
+    var errorDiv = document.getElementById("card-errors");
+    if (event.error) {
+        var html = `
+            <span class="icon" role="alert">
+                <i class="fas fa-times"></i>
+            </span>
+            <span>${event.error.message}</span>
+        `;
+        $(errorDiv).html(html);
+    } else {
+        errorDiv.textContent = "";
+    }
+});
