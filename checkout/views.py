@@ -4,6 +4,9 @@ from .forms import CheckoutForm
 from profiles.models import Customer
 from .models import Order
 from products.models import Product
+from cart.contexts import cart_total
+import stripe
+from django.conf import settings
 
 
 def checkout(request):
@@ -11,6 +14,8 @@ def checkout(request):
     initial_data = {}
     cart_items = {}
     cart_total = 0
+    stripe_public_key = settings.STRIPE_PUBLIC_KEY
+    stripe_secret_key = settings.STRIPE_SECRET_KEY
 
     cart = request.session.get('cart', {})
     cart_items = {int(product_id): quantity for product_id,
@@ -86,11 +91,24 @@ def checkout(request):
     else:
         form = CheckoutForm(initial=initial_data)
 
+    print("stripe_public_key:", stripe_public_key)
+
+    print("stripe_secret_key:", stripe_secret_key)
+
+    stripe_total = round(cart_total * 100)
+
+    stripe.api_key = stripe_secret_key
+    intent = stripe.PaymentIntent.create(
+        amount=stripe_total,
+        currency=settings.STRIPE_CURRENCY,
+    )
+    print(intent)
+
     context = {
         'form': form,
         'cart_items': list(cart_items.values()),
         'cart_total': cart_total,
-        'stripe_public_key': 'pk_test_51NePQVFgmCeLvFA2hvxuZ4LK9xdxjqvz7teTiNwexwxIeDRwYFVI6O8RHRVeqQnelSkopMiNsnZekpNUGz5qRlnj00DE9yoyc5',
-        'client_secret': 'test client secret'
+        'stripe_public_key': stripe_public_key,
+        'client_secret': intent.client_secret
     }
     return render(request, 'checkout/checkout.html', context)

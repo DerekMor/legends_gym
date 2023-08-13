@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -164,3 +165,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Stripe
+STRIPE_CURRENCY = 'usd'
+STRIPE_PUBLIC_KEY = 'pk_test_51NePQVFgmCeLvFA2hvxuZ4LK9xdxjqvz7teTiNwexwxIeDRwYFVI6O8RHRVeqQnelSkopMiNsnZekpNUGz5qRlnj00DE9yoyc5'
+STRIPE_SECRET_KEY ='sk_test_51NePQVFgmCeLvFA2w8ESQ8qa6Kr2y9JZS2sXCcZTBFsVN8f4OjOoRIjJ1g6T5J0gszjjyR9ewSArw5sHM9pxQMXJ003ql9Xk7v'
+
+print("STRIPE_PUBLIC_KEY from settings:", STRIPE_PUBLIC_KEY)
+print("STRIPE_SECRET_KEY from settings:", STRIPE_SECRET_KEY)
