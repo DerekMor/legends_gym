@@ -24,23 +24,6 @@ def checkout(request):
         cart_items = request.session['cart']
         print("Cart Items:", cart_items)
 
-    if user.is_authenticated:
-        try:
-            customer = Customer.objects.get(user=user)
-            initial_data = {
-                'full_name': customer.default_full_name,
-                'email': customer.default_email,
-                'phone_number': customer.default_phone_number,
-                'street_address1': customer.default_street_address1,
-                'street_address2': customer.default_street_address2,
-                'town_or_city': customer.default_town_or_city,
-                'county': customer.default_county,
-                'country': customer.default_country,
-                'postcode': customer.default_postcode,
-            }
-        except Customer.DoesNotExist:
-            pass
-
     for product_id, quantity in cart.items():
         product = get_object_or_404(Product, id=product_id)
         subtotal = product.price * quantity
@@ -53,6 +36,7 @@ def checkout(request):
 
             if user.is_authenticated:
 
+                customer = Customer.objects.get(user=user)
                 order.customer = customer
                 order.save()
 
@@ -112,3 +96,21 @@ def checkout(request):
         'client_secret': intent.client_secret
     }
     return render(request, 'checkout/checkout.html', context)
+
+
+def checkout_success(request, order_number):
+
+    order = get_object_or_404(Order, order_number=order_number)
+    messages.success(request, f'Order successfully processed! \
+        Your order number is {order_number}. A confirmation \
+        email will be sent to {order.email}.')
+
+    if 'cart' in request.session:
+        del request.session['cart']
+
+    template = 'checkout/checkout_success.html'
+    context = {
+        'order': order,
+    }
+
+    return render(request, template, context)

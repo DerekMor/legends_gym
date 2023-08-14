@@ -9,28 +9,44 @@
     <div class="checkout-container">
         <div class="order-details order-summary">
             <h2>Order Details</h2>
-            <form method="post">
+            <form method="post" id="payment-form">
                 {% csrf_token %}
+                {% if form.errors %}
+                <div class="alert alert-danger">
+                    <strong>There was an error with your form submission. Please correct the errors:</strong>
+                    <ul>
+                        {% for field in form %}
+                        {% for error in field.errors %}
+                        <li>{{ field.label }}: {{ error }}</li>
+                        {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
                 {{ form.as_p }}
-            </form>
+
+
         </div>
         <div class="order-summary">
             <h2>Payment Summary</h2>
 
             <p>Total: €{{ cart_total }}</p>
-            <form>
-                <fieldset class="px-3">
-                    <legend class="fieldset-label 2 w-auto">Payment</legend>
 
-                    <div class="mb-3" id="card-element"></div>
+            {% csrf_token %}
+            <fieldset class="px-3">
+                <legend class="fieldset-label 2 w-auto">Payment</legend>
 
-                    <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                <div class="mb-3" id="card-element"></div>
 
-                    <input type="hidden" value="{{ client_secret }}" name="client_secret">
-                </fieldset>
-            </form>
+                <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+
+                <input type="hidden" value="{{ client_secret }}" name="client_secret">
+            </fieldset>
             <a href="{% url 'view_cart' %}" class="btn btn-secondary">Return to Cart</a>
-            <a href="#" class="btn btn-primary">Complete Order - €{{ cart_total }}</a>
+            <button type="submit" class="btn btn-primary" id="submit-button">
+                Complete Order - €{{ cart_total }}</button>
+            </form>
+
         </div>
     </div>
 </div>
