@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .forms import CheckoutForm
 from profiles.models import Customer
-from .models import Order
+from .models import Order, OrderLineItem
 from products.models import Product
 from cart.contexts import cart_total
 import stripe
@@ -10,6 +10,7 @@ from django.conf import settings
 
 
 def checkout(request):
+    print("Entering checkout view")
     user = request.user
     initial_data = {}
     cart_items = {}
@@ -30,26 +31,42 @@ def checkout(request):
         cart_total += subtotal
 
     if request.method == 'POST':
+        print("Processing POST request")
         form = CheckoutForm(request.POST, initial=initial_data)
         if form.is_valid():
             order = form.save(commit=False)
 
             if user.is_authenticated:
 
-                customer = Customer.objects.get(user=user)
-                order.customer = customer
-                order.save()
+                try:
+                    order = form.save(commit=False)
+                    customer = Customer.objects.get(user=user)
+                    order.customer = customer
+                    order.order_total = cart_total
+                    order.save()
 
-                customer.default_full_name = form.cleaned_data['full_name']
-                customer.default_email = form.cleaned_data['email']
-                customer.default_phone_number = form.cleaned_data['phone_number']
-                customer.default_street_address1 = form.cleaned_data['street_address1']
-                customer.default_street_address2 = form.cleaned_data['street_address2']
-                customer.default_town_or_city = form.cleaned_data['town_or_city']
-                customer.default_county = form.cleaned_data['county']
-                customer.default_country = form.cleaned_data['country']
-                customer.default_postcode = form.cleaned_data['postcode']
-                customer.save()
+                    for product_id, quantity in cart.items():
+                        product = get_object_or_404(Product, id=product_id)
+                        OrderLineItem.objects.create(
+                            order=order,
+                            product=product,
+                            quantity=quantity,
+                            lineitem_total=product.price * quantity
+                        )
+
+                    customer.default_full_name = form.cleaned_data['full_name']
+                    customer.default_email = form.cleaned_data['email']
+                    customer.default_phone_number = form.cleaned_data['phone_number']
+                    customer.default_street_address1 = form.cleaned_data['street_address1']
+                    customer.default_street_address2 = form.cleaned_data['street_address2']
+                    customer.default_town_or_city = form.cleaned_data['town_or_city']
+                    customer.default_county = form.cleaned_data['county']
+                    customer.default_country = form.cleaned_data['country']
+                    customer.default_postcode = form.cleaned_data['postcode']
+                    customer.save()
+
+                except Customer.DoesNotExist:
+                    print('user does not exist')
 
                 if form.cleaned_data.get('save_info'):
                     customer.default_full_name = form.cleaned_data['full_name']
@@ -64,7 +81,8 @@ def checkout(request):
                     customer.save()
 
                 messages.success(request, 'Order successfully placed!')
-                return redirect('home')
+                order.save()  
+                return checkout_success(request, order.order_number)
             else:
                 messages.error(
                     request, 'You need to be logged in to place an order.')
