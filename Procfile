@@ -1,0 +1,1 @@
+web: gunicorn legends_gym.wsgi:application
