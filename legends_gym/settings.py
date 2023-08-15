@@ -26,10 +26,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = ['fake_secret_key']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['legends-gym.herokuapp.com/',
-                 '8000-derekmor-legends-gym-449eemfyrc.us2.codeanyapp.com']
+                 '8000-derekmor-legends-gym-449eemfyrc.us2.codeanyapp.com',
+                 'legends-gym-b229ec203712.herokuapp.com/']
 
 
 # Application definition
