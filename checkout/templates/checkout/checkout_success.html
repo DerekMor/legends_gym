@@ -7,8 +7,9 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col">
-            <h3>Thank you for your order</h3>
+        <div class="col order-summary">
+            <h2>Thank You for Your Order, {{ order.customer.user.username }}!</h2>
+            <p>We have sent a confirmation email to {{ order.email }}.</p>
         </div>
     </div>
 </div>

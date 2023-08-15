@@ -171,4 +171,3 @@ load_dotenv()
 STRIPE_CURRENCY = 'usd'
 STRIPE_PUBLIC_KEY = os.environ['STRIPE_PUBLIC_KEY']
 STRIPE_SECRET_KEY = os.environ['STRIPE_SECRET_KEY']
-
