@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from django.http import Http404
 
 
 def index(request):
-    raise Http404("This page does not exist")
+
+    return render(request, 'home/index.html')
 
 
 def custom_404(request, exception):

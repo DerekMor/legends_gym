@@ -18,6 +18,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from cart import views
+from allauth.account.views import LoginView, LogoutView, SignupView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,6 +27,10 @@ urlpatterns = [
     path('products/', include('products.urls')),
     path('cart/', include('cart.urls')),
     path('checkout/', include('checkout.urls')),
+    path('accounts/login/', LoginView.as_view(), name='account_login'),
+    path('accounts/logout/', LogoutView.as_view(), name='account_logout'),
+    path('accounts/signup/', SignupView.as_view(), name='account_signup'),
+    
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
