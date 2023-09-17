@@ -68,6 +68,23 @@ Posts would help people who need inspiration to get started by offers or exclusi
 They would recieve these offers by email or social media.\
 The newsletter was also a part of the strategy as users had chosen to be on it.
 
+## Business Model
+
+**Legends Gym** operates as a B2C (Business to Consumer) company with a primary focus on fitness and e-commerce. Revenue streams include:
+
+- **E-commerce Sales:** Selling martial arts training equipment, fitness gear, and related products through an online store.
+
+- **Gym Memberships:** Offering memberships for access to physical gym facilities.
+
+- **Training Services:** Providing training classes and programs.
+
+- **Merchandise and Equipment:** Selling branded merchandise and fitness essentials.
+
+- **Membership Tiers:** Offering different membership levels to cater to various customer needs.
+
+Legends Gym's goal is to provide a comprehensive fitness experience to customers while maintaining a profitable business model.
+
+
 ## Credits
 - Bootstraps docs
 - Stripes docs
