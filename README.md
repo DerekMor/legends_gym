@@ -19,16 +19,16 @@ The **Legends Gym Website** is designed with a clear intent: to encourage indivi
 
 ## Site features
 
-As an e-commerce site, users are able to search through the contents as well as sort their searches.\
-Filtering by category is also available from the main nav bar\
-Users can click into the full products to see details and add them to their cart.\
-In the shopping cart page users can update or remove items before moving onto the checkout page.\
-In the main checkout page users must be logged in to complete their orders\
-In this page there is a order details form and card payment using Stripe\
-After a successful checkout a success page is rendered for the users as well as a message using django messages.\
-Successful orders can be viewed in the admin panel.\
-Users can also log in and sihn up from the header at any area of the site\
-Newsletter sign up using Mailchimp form also provided in the footer.\
+- As an e-commerce site, users are able to search through the contents as well as sort their searches.\
+- Filtering by category is also available from the main nav bar\
+- Users can click into the full products to see details and add them to their cart.\
+- In the shopping cart page users can update or remove items before moving onto the checkout page.\
+- In the main checkout page users must be logged in to complete their orders\
+- In this page there is a order details form and card payment using Stripe\
+- After a successful checkout a success page is rendered for the users as well as a message using django messages.\
+- Successful orders can be viewed in the admin panel.\
+- Users can also log in and sihn up from the header at any area of the site\
+- Newsletter sign up using Mailchimp form also provided in the footer.\
 
 ### Features not implemented
 
@@ -50,6 +50,51 @@ Newsletter sign up using Mailchimp form also provided in the footer.\
 - Link Heroku app to Github repo
 - Click deploy
 
+Visual Design Decisions
+
+## Visual Design Decisions
+This section provides insights into the visual design choices and includes wireframes for both desktop and mobile views.
+
+### Desktop Wireframe
+![Desktop Wireframe](media/wireframe.png)
+
+#### Header
+- **Logo:** Positioned at the top-left corner, our logo represents the brand's identity and sets the tone for the website.
+- **Navigation:** The top navigation bar is clean and user-friendly, ensuring easy access to key sections.
+- **Search Bar:** A prominent search bar encourages users to find products quickly.
+- **User Account:** User account-related links are conveniently located on the top-right corner.
+
+#### Hero Section
+- **Engaging Image:** A high-quality image showcasing our gym welcomes users to the site.
+- **Call to Action:** Clear and enticing call-to-action buttons direct users to explore our products and training plans.
+
+#### Product Showcase
+- **Featured Products:** Eye-catching product cards display featured items with images, descriptions, and prices.
+- **Categories:** A categorized layout makes it easy for users to find products of interest.
+
+#### Footer
+- **Newsletter Signup:** The footer features a newsletter signup form, encouraging users to stay informed.
+
+### Mobile Wireframe
+![Mobile Wireframe](media/wireframe-mobile.png)
+
+#### Mobile Navigation
+- **Hamburger Menu:** To optimize space, a hamburger menu provides access to the navigation items.
+
+#### Hero Section
+- **Simplified Hero:** On mobile, the hero section is simplified to maintain a clean and uncluttered appearance.
+
+#### Product Showcase
+- **Product Cards:** Mobile-friendly product cards stack neatly for easy scrolling.
+
+### Color Scheme and Typography
+The color scheme consists of a combination of light grey and white for readability with overlays over the background to ensure no text is lost. Buttons are coloured gray for navigation, blue for adding items and red for removing items to keep consistant colour scheme throughout. Helvetica is used as the primary font for readability.
+
+### Responsiveness
+Legends Gym is designed to be fully responsive, ensuring a seamless experience across various devices and screen sizes.
+
+### Conclusion
+The visual design decisions are driven by the goal of providing an engaging, user-friendly experience for visitors. The site strives to be visually appealing, accessible, and easy to navigate, whether you're using it on a desktop computer or a mobile device.
 
 ## SEO
 
