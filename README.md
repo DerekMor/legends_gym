@@ -5,6 +5,17 @@ Legends gym is a real gym I am a member of based in Dublin. I recieved full perm
 The site is liked together using ElephantSQL for the database, Amazon Web Services for hosting the images and static files and Stripe for taking card payments. All of this is joined together and deployed on Heroku.\
 <a href="https://legends-gym-b229ec203712.herokuapp.com/"> Link to the deployed site</a>
 
+## Intent
+
+The **Legends Gym Website** is designed with a clear intent: to encourage individuals in their fitness journeys and provide a relevant shopping experience for fitness enthusiasts. The site aims to:
+
+- **Promote Fitness:** Inspire and support people in achieving their fitness goals by offering top-notch training services and premium fitness content.
+
+- **Access to Quality Gear:** Provide access to high-quality martial arts training equipment and fitness gear including own brand gear.
+
+- **Community Building:** Create a vibrant fitness community by connecting like-minded individuals, trainers, and enthusiasts.
+
+- **Convenience:** Offer an user friendly e-commerce platform for purchasing fitness products and registering for training programs.
 
 ## Site features
 
