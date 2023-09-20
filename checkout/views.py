@@ -7,8 +7,9 @@ from products.models import Product
 from cart.contexts import cart_total
 import stripe
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def checkout(request):
     print("Entering checkout view")
     user = request.user
