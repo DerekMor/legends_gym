@@ -2,6 +2,7 @@ from django.db import models
 from profiles.models import Customer
 from products.models import Product
 import uuid
+from django.contrib.auth.models import User
 
 
 class Order(models.Model):
@@ -50,3 +51,11 @@ class OrderLineItem(models.Model):
 
     def __str__(self):
         return f'Order {self.order.order_number} - Product {self.product.name}'
+
+class OrderHistory(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    order_date = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return f"{self.user.username}'s Order History"
