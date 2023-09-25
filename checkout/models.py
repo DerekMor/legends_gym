@@ -4,6 +4,15 @@ from products.models import Product
 import uuid
 from django.contrib.auth.models import User
 
+class DiscountCode(models.Model):
+    code = models.CharField(max_length=20, unique=True)
+    percentage = models.DecimalField(max_digits=5, decimal_places=2)
+    is_active = models.BooleanField(default=True)
+    used = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.code
+
 
 class Order(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
@@ -73,11 +82,3 @@ class OrderHistory(models.Model):
     def __str__(self):
         return f"{self.user.username}'s Order History"
 
-class DiscountCode(models.Model):
-    code = models.CharField(max_length=20, unique=True)
-    percentage = models.DecimalField(max_digits=5, decimal_places=2)
-    is_active = models.BooleanField(default=True)
-    used = models.BooleanField(default=False)
-
-    def __str__(self):
-        return self.code
