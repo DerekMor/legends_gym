@@ -16,4 +16,19 @@
     <img src="{{ user_profile.profile_picture.url }}" alt="Profile Picture">
 {% endif %}
 </div>
+<br>
+<div class="overlay">
+    <h2>Your Orders</h2>
+    <ul>
+        {% for order in orders %}
+        <li>
+            Order Number: {{ order.order_number }}<br>
+            Date Ordered: {{ order.date }}<br>
+            Total Amount: €{{ order.order_total }}<br>
+        </li>
+        {% empty %}
+        <li>No orders found.</li>
+        {% endfor %}
+    </ul>
+</div>
 {% endblock %}
