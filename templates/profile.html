@@ -4,9 +4,9 @@
 
 
 {% block content %}
-
+<div class="overlay">
 <h1>User Profile</h1>
-<form method="post" enctype="multipart/form-data">
+<form method="post"  enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     {{ profile_picture_form.as_p }}
@@ -15,5 +15,5 @@
 {% if user_profile.profile_picture %}
     <img src="{{ user_profile.profile_picture.url }}" alt="Profile Picture">
 {% endif %}
-
+</div>
 {% endblock %}
