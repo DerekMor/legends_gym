@@ -2,7 +2,8 @@ from django.db.models import Q
 from django.contrib import messages
 from django.urls import reverse
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Product
+from .models import Product, Review
+from django.contrib.auth.decorators import login_required
 
 
 def all_products(request):
@@ -69,3 +70,37 @@ def plans_products(request):
     }
 
     return render(request, 'products/products.html', context)
+
+@login_required
+def add_review(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+
+    if request.method == 'POST':
+        title = request.POST['title']
+        content = request.POST['content']
+        rating = request.POST['rating']
+        user = request.user
+
+        
+        existing_review = Review.objects.filter(user=user, product=product).first()
+
+        if existing_review:
+            existing_review.title = title
+            existing_review.content = content
+            existing_review.rating = rating
+            existing_review.save()
+        else:
+            Review.objects.create(user=user, product=product, title=title, content=content, rating=rating)
+
+        return redirect('single_product', pk=product_id)
+
+    return render(request, 'products/add_review.html', {'product': product})
+
+@login_required
+def delete_review(request, review_id):
+    review = get_object_or_404(Review, pk=review_id)
+
+    if review.user == request.user:
+        review.delete()
+
+    return redirect('single_product', pk=review.product.id)
