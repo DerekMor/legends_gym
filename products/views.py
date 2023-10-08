@@ -2,7 +2,7 @@ from django.db.models import Q
 from django.contrib import messages
 from django.urls import reverse
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Product, Review
+from .models import Product, Review, Wishlist
 from django.contrib.auth.decorators import login_required
 
 
@@ -50,15 +50,26 @@ def all_products(request):
     return render(request, 'products/products.html', context)
 
 
-def single_product(request, pk):
+def single_product(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    user = request.user
+    wishlist, created = Wishlist.objects.get_or_create(user=user)
 
-    product = get_object_or_404(Product, pk=pk)
+    if request.method == 'POST':
+        if 'add_to_wishlist' in request.POST:
+            if wishlist.products.filter(pk=product_id).exists():
+                messages.warning(request, 'This item is already in your wishlist.')
+            else:
+                wishlist.products.add(product)
+                messages.success(request, 'Item added to your wishlist successfully.')
+        elif 'remove_from_wishlist' in request.POST:
+            if wishlist.products.filter(pk=product_id).exists():
+                wishlist.products.remove(product)
+                messages.success(request, 'Item removed from your wishlist successfully.')
+            else:
+                messages.warning(request, 'This item is not in your wishlist.')
 
-    context = {
-        'product': product,
-    }
-
-    return render(request, 'products/single_product.html', context)
+    return render(request, 'single_product.html', {'product': product, 'wishlist': wishlist})
 
 
 def plans_products(request):
