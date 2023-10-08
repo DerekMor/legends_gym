@@ -28,4 +28,25 @@
         </div>
     </div>
 </div>
+<br>
+<div class="mt-4 overlay">
+    <h3>Product Reviews</h3>
+    {% if user.is_authenticated %}
+        <a href="{% url 'add_review' product.id %}" class="btn btn-primary">Add Review</a>
+    {% endif %}
+    
+    <ul>
+        {% for review in product.review_set.all %}
+            <li>
+                <strong>{{ review.user.username }}:</strong> {{ review.title }} (Rating: {{ review.rating }})
+                <p>{{ review.content }}</p>
+                {% if user.is_authenticated and review.user == user %}
+                <a href="{% url 'delete_review' product_id=product.id review_id=review.id %}" class="btn btn-danger btn-sm">Delete Review</a>
+                {% endif %}
+            </li>
+        {% empty %}
+            <p>No reviews for this product yet.</p>
+        {% endfor %}
+    </ul>
+</div>
 {% endblock %}

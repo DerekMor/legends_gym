@@ -97,7 +97,7 @@ def add_review(request, product_id):
     return render(request, 'products/add_review.html', {'product': product})
 
 @login_required
-def delete_review(request, review_id):
+def delete_review(request, product_id, review_id):
     review = get_object_or_404(Review, pk=review_id)
 
     if review.user == request.user:
