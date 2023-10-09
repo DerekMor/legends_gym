@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from .forms import CheckoutForm
+from .forms import CheckoutForm, DiscountCodeForm
 from profiles.models import Customer
 from .models import Order, OrderLineItem
 from products.models import Product
@@ -18,6 +18,7 @@ def checkout(request):
     cart_total = 0
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
+    discount_code_form = DiscountCodeForm()
 
     cart = request.session.get('cart', {})
     cart_items = {int(product_id): quantity for product_id,
@@ -112,7 +113,8 @@ def checkout(request):
         'cart_items': list(cart_items.values()),
         'cart_total': cart_total,
         'stripe_public_key': stripe_public_key,
-        'client_secret': intent.client_secret
+        'client_secret': intent.client_secret,
+        'discount_code_form': discount_code_form,
     }
     return render(request, 'checkout/checkout.html', context)
 
