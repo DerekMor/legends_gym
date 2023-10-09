@@ -145,4 +145,4 @@ def remove_from_wishlist(request, product_id):
     else:
         messages.warning(request, 'This item is not in your wishlist.')
 
-    return redirect('single_product', product_id=product_id)
+    return redirect(request.META.get('HTTP_REFERER', reverse('profile')))

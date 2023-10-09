@@ -10,7 +10,7 @@ from products.models import Wishlist
 def profile(request):
     user_profile = Customer.objects.get(user=request.user)
 
-    wishlist, _ = Wishlist.objects.get_or_create(customer=user_profile)
+    wishlist, _ = Wishlist.objects.get_or_create(user=user_profile.user)
 
     orders = Order.objects.filter(customer=user_profile).order_by('-date')
     
@@ -25,4 +25,4 @@ def profile(request):
         form = UserProfileForm(instance=user_profile)
         profile_picture_form = ProfilePictureForm(instance=user_profile)
 
-    return render(request, 'profile.html', {'form': form, 'profile_picture_form': profile_picture_form, 'orders': orders, 'wishlist': wishlist,})
+    return render(request, 'profile.html', {'form': form, 'profile_picture_form': profile_picture_form, 'orders': orders, 'wishlist': wishlist, 'user_profile': user_profile})

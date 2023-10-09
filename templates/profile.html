@@ -13,7 +13,7 @@
     <button type="submit">Update Profile</button>
 </form>
 {% if user_profile.profile_picture %}
-    <img src="{{ user_profile.profile_picture.url }}" alt="Profile Picture">
+    <img src="{{ user_profile.profile_picture.url }}" alt="Profile Picture" style="height: 300px; width: 300px;">
 {% endif %}
 </div>
 <br>
@@ -28,6 +28,24 @@
         </li>
         {% empty %}
         <li>No orders found.</li>
+        {% endfor %}
+    </ul>
+</div>
+<br>
+<div class="overlay">
+    <h2>Your Wishlist</h2>
+    <ul>
+        {% for product in wishlist.products.all %}
+        <li>
+            {{ product.name }}<br>
+            Price: €{{ product.price }}<br>
+            <form method="post" action="{% url 'remove_from_wishlist' product.id %}">
+                {% csrf_token %}
+                <button type="submit">Remove from Wishlist</button>
+            </form>
+        </li>
+        {% empty %}
+        <li>Your wishlist is empty.</li>
         {% endfor %}
     </ul>
 </div>
