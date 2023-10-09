@@ -2,12 +2,13 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .forms import CheckoutForm, DiscountCodeForm
 from profiles.models import Customer
-from .models import Order, OrderLineItem
+from .models import Order, OrderLineItem, DiscountCode
 from products.models import Product
 from cart.contexts import cart_total
 import stripe
 from django.conf import settings
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
+import uuid
 
 @login_required
 def checkout(request):
@@ -135,3 +136,26 @@ def checkout_success(request, order_number):
     }
 
     return render(request, template, context)
+
+@login_required
+@permission_required('checkout.can_generate_discount_code', raise_exception=True)
+def generate_one_time_code(request):
+    if request.method == 'POST':
+        try:
+        
+            percentage = float(request.POST['percentage'])
+            if 0 <= percentage <= 100:
+                one_time_code = "SOME_UNIQUE_CODE"
+                discount_code = DiscountCode.objects.create(
+                    code=one_time_code, percentage=percentage)
+                OneTimeDiscountCode.objects.create(discount_code=discount_code)
+
+                messages.success(
+                    request, 'One-time discount code generated successfully.')
+                return redirect('generate_one_time_code')
+            else:
+                messages.error(request, 'Invalid percentage value.')
+        except ValueError:
+            messages.error(request, 'Invalid percentage format.')
+    
+    return render(request, 'checkout/generate_one_time_code.html')

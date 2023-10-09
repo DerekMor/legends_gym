@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container overlay">
+    <h2>Generate One-Time Discount Code</h2>
+    <form method="post" id="discount-code-form">
+        {% csrf_token %}
+        {{ discount_code_form.as_p }}
+        <div class="form-group">
+            <label for="percentage">Percentage Discount:</label>
+            <input type="number" name="percentage" id="percentage" min="0" max="100" step="0.01" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Generate Discount Code</button>
+    </form>
+</div>
+{% endblock %}
