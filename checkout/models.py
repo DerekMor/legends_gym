@@ -6,13 +6,6 @@ from django.contrib.auth.models import User, Permission
 from django.contrib.contenttypes.models import ContentType
 
 
-content_type = ContentType.objects.get_for_model(DiscountCode)
-permission = Permission.objects.create(
-    codename='create_discountcode',
-    name='Can create discount code',
-    content_type=content_type,
-)
-
 class DiscountCode(models.Model):
     code = models.CharField(max_length=20, unique=True)
     percentage = models.DecimalField(max_digits=5, decimal_places=2)
@@ -21,6 +14,14 @@ class DiscountCode(models.Model):
 
     def __str__(self):
         return self.code
+
+    class Meta:
+        permissions = (
+            ('can_change_discountcode', 'Can change discount code'),
+        )
+
+
+
 
 
 class Order(models.Model):
