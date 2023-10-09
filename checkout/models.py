@@ -2,7 +2,16 @@ from django.db import models
 from profiles.models import Customer
 from products.models import Product
 import uuid
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Permission
+from django.contrib.contenttypes.models import ContentType
+
+
+content_type = ContentType.objects.get_for_model(DiscountCode)
+permission = Permission.objects.create(
+    codename='create_discountcode',
+    name='Can create discount code',
+    content_type=content_type,
+)
 
 class DiscountCode(models.Model):
     code = models.CharField(max_length=20, unique=True)
