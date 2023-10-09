@@ -57,19 +57,20 @@ def single_product(request, product_id):
 
     if request.method == 'POST':
         if 'add_to_wishlist' in request.POST:
-            if wishlist.products.filter(pk=product_id).exists():
+            if product in wishlist.products.all():
                 messages.warning(request, 'This item is already in your wishlist.')
             else:
                 wishlist.products.add(product)
                 messages.success(request, 'Item added to your wishlist successfully.')
         elif 'remove_from_wishlist' in request.POST:
-            if wishlist.products.filter(pk=product_id).exists():
+            if product in wishlist.products.all():
                 wishlist.products.remove(product)
                 messages.success(request, 'Item removed from your wishlist successfully.')
             else:
                 messages.warning(request, 'This item is not in your wishlist.')
 
     return render(request, 'single_product.html', {'product': product, 'wishlist': wishlist})
+
 
 
 def plans_products(request):
@@ -115,3 +116,33 @@ def delete_review(request, product_id, review_id):
         review.delete()
 
     return redirect('single_product', pk=review.product.id)
+
+
+@login_required
+def add_to_wishlist(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    user = request.user
+    wishlist, created = Wishlist.objects.get_or_create(user=user)
+
+    if wishlist.products.filter(pk=product_id).exists():
+        messages.warning(request, 'This item is already in your wishlist.')
+    else:
+        wishlist.products.add(product)
+        messages.success(request, 'Item added to your wishlist successfully.')
+
+    return redirect('single_product', product_id=product_id)
+
+
+@login_required
+def remove_from_wishlist(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    user = request.user
+    wishlist, created = Wishlist.objects.get_or_create(user=user)
+
+    if wishlist.products.filter(pk=product_id).exists():
+        wishlist.products.remove(product)
+        messages.success(request, 'Item removed from your wishlist successfully.')
+    else:
+        messages.warning(request, 'This item is not in your wishlist.')
+
+    return redirect('single_product', product_id=product_id)
