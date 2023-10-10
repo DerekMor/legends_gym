@@ -109,6 +109,7 @@ def checkout(request):
     )
     print(intent)
 
+
     context = {
         'form': form,
         'cart_items': list(cart_items.values()),
@@ -170,17 +171,3 @@ def generate_one_time_code(request):
 
 
   
-
-def apply_discount_code(self, discount_code):
-    try:
-        code = DiscountCode.objects.get(code=discount_code, is_active=True, used=False)
-        discount_amount = (code.percentage / 100) * self.order_total
-        self.order_total -= discount_amount
-
-       
-        code.used = True
-        code.is_active = False  
-        code.save()
-        self.save()
-    except DiscountCode.DoesNotExist:
-        raise ValidationError("Invalid or used discount code.")

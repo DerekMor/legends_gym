@@ -10,4 +10,4 @@ class CheckoutForm(forms.ModelForm):
 
 
 class DiscountCodeForm(forms.Form):
-    Discount = forms.CharField(max_length=20)
+    code = forms.CharField(max_length=20)

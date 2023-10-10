@@ -54,6 +54,13 @@
         <p>Your cart is empty.</p>
         {% endif %}
 
+        <form method="post" action="{% url 'apply_discount_code' %}" id="discount-code-form">
+            {% csrf_token %}
+            {{ discount_code_form.as_p }}
+            <input type="text" name="code" value="{{ code }}" maxlength="20">
+            <button type="submit" class="btn btn-primary">Apply Discount Code</button>
+        </form>
+
         <a href="{% url 'home' %}" class="btn btn-primary">Continue Shopping</a>
         <a href="{% url 'checkout' %}" class="btn btn-primary">Secure Checkout</a>
     </div>

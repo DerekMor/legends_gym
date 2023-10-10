@@ -24,18 +24,14 @@
                 </div>
                 {% endif %}
                 {{ form.as_p }}
-
+            
 
         </div>
         <div class="order-summary">
             <h2>Payment Summary</h2>
 
             <p>Total: €{{ cart_total }}</p>
-            <form method="post" id="discount-code-form">
-                {% csrf_token %}
-                {{ discount_code_form.as_p }}
-                <button type="submit" class="btn btn-primary">Apply Discount Code</button>
-            </form>
+            
 
             {% csrf_token %}
             <fieldset class="px-3">

@@ -1,6 +1,8 @@
 from products.models import Product
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
+from checkout.forms import DiscountCodeForm
+from checkout.models import DiscountCode
 
 
 def view_cart(request):
@@ -63,5 +65,37 @@ def update_cart(request, product_id):
             cart = request.session.get('cart', {})
             cart[product_id] = quantity
             request.session['cart'] = cart
+
+    return redirect('view_cart')
+
+
+def apply_discount_code(request):
+    if request.method == 'POST':
+        discount_code_form = DiscountCodeForm(request.POST)
+        if discount_code_form.is_valid():
+            discount_code = discount_code_form.cleaned_data['code']
+            
+            try:
+                discount = DiscountCode.objects.get(code=discount_code, used=False)
+
+                if discount.percentage > 0:
+                    cart_total = request.session.get('cart_total', 0)
+                    discount_amount = (discount.percentage / 100) * cart_total
+                    cart_total -= float(discount_amount)  # Convert to float
+
+                    discount.used = True
+                    discount.save()
+
+                    request.session['cart_total'] = cart_total
+
+                    messages.success(request, 'Discount code applied successfully.')
+                else:
+                    messages.error(request, 'Invalid discount code.')
+            except DiscountCode.DoesNotExist:
+                messages.error(request, 'Discount code not found or already used.')
+        else:
+            messages.error(request, 'Invalid discount code.')
+    else:
+        messages.error(request, 'Invalid request.')
 
     return redirect('view_cart')
