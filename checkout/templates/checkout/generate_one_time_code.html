@@ -13,4 +13,10 @@
         <button type="submit" class="btn btn-primary">Generate Discount Code</button>
     </form>
 </div>
+<br>
+<div class="container overlay">
+    {% if generated_code %}
+        <h3>Generated One-Time Discount Code: {{ generated_code }}</h3>
+    {% endif %}
+</div>
 {% endblock %}

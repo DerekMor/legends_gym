@@ -137,25 +137,50 @@ def checkout_success(request, order_number):
 
     return render(request, template, context)
 
+
+
 @login_required
 @permission_required('checkout.can_generate_discount_code', raise_exception=True)
 def generate_one_time_code(request):
-    if request.method == 'POST':
-        try:
-        
-            percentage = float(request.POST['percentage'])
-            if 0 <= percentage <= 100:
-                one_time_code = "SOME_UNIQUE_CODE"
-                discount_code = DiscountCode.objects.create(
-                    code=one_time_code, percentage=percentage)
-                OneTimeDiscountCode.objects.create(discount_code=discount_code)
+  generated_code = None
 
-                messages.success(
-                    request, 'One-time discount code generated successfully.')
-                return redirect('generate_one_time_code')
-            else:
-                messages.error(request, 'Invalid percentage value.')
-        except ValueError:
-            messages.error(request, 'Invalid percentage format.')
-    
-    return render(request, 'checkout/generate_one_time_code.html')
+  if request.method == 'POST':
+    try:
+      percentage = float(request.POST['percentage'])
+      print("Percentage:", percentage)
+      if 0 <= percentage <= 100:
+        one_time_code = str(uuid.uuid4().hex.upper()[:8])
+        print("Generated Code:", one_time_code)
+
+        discount_code = DiscountCode.objects.create(
+            code=one_time_code, percentage=percentage, used=False)
+
+        generated_code = one_time_code
+
+        messages.success(
+            request, 'One-time discount code generated successfully.')
+      else:
+        messages.error(request, 'Invalid percentage value.')
+    except ValueError:
+      messages.error(request, 'Invalid percentage format.')
+
+  print("Generated Code (outside try-except):", generated_code)
+  context = {'generated_code': generated_code}
+  return render(request, 'checkout/generate_one_time_code.html', context)
+
+
+  
+
+def apply_discount_code(self, discount_code):
+    try:
+        code = DiscountCode.objects.get(code=discount_code, is_active=True, used=False)
+        discount_amount = (code.percentage / 100) * self.order_total
+        self.order_total -= discount_amount
+
+       
+        code.used = True
+        code.is_active = False  
+        code.save()
+        self.save()
+    except DiscountCode.DoesNotExist:
+        raise ValidationError("Invalid or used discount code.")
