@@ -21,6 +21,14 @@
                 class="btn btn-primary btn-lg mt-4 bg-dark text-white rounded-pill main-button">View Our Training Plans</a>
         </div>
     </div>
+    {% if perms.checkout.can_generate_discount_code %}
+    <!-- This button will only be shown to users with the 'checkout.can_generate_discount_code' permission -->
+    <div class="row">
+        <div class="col d-flex justify-content-center align-items-center mt-3">
+            <a href="{% url 'generate_one_time_code' %}" class="btn btn-primary btn-lg mt-4 bg-dark text-white rounded-pill main-button">Generate One-Time Code</a>
+        </div>
+    </div>
+    {% endif %}
 </div>
 
 
