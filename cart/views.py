@@ -9,6 +9,7 @@ from decimal import Decimal
 def view_cart(request):
     cart = request.session.get('cart', {})
     cart_items = []
+    
 
     cart_total = Decimal('0.00')
 
@@ -23,6 +24,9 @@ def view_cart(request):
     cart_total -= discount_amount
 
     request.session['cart_total'] = float(cart_total)
+
+    if cart_total < 0:
+        cart_total = Decimal('0.00')
 
     context = {
         'cart_items': cart_items,
@@ -91,7 +95,7 @@ def apply_discount_code(request):
                     print('before', cart_total)
                     cart_total_decimal = Decimal(str(cart_total))
                     discount_percentage = Decimal(str(discount.percentage))
-                    discount_amount = (discount_percentage / Decimal('100.00')) * cart_total_decimal
+                    discount_amount = (discount_percentage * cart_total_decimal) / Decimal('100.00')
                     request.session['discount_amount'] = float(discount_amount)
                     cart_total_decimal -= discount_amount
 

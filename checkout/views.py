@@ -9,6 +9,7 @@ import stripe
 from django.conf import settings
 from django.contrib.auth.decorators import login_required, permission_required
 import uuid
+from decimal import Decimal
 
 @login_required
 def checkout(request):
@@ -32,6 +33,13 @@ def checkout(request):
         product = get_object_or_404(Product, id=product_id)
         subtotal = product.price * quantity
         cart_total += subtotal
+
+    cart_total = request.session.get('cart_total')
+
+
+    if cart_total <= 0:
+        messages.error(request, 'Your cart is empty or the total is zero.')
+        return redirect('view_cart')
 
     if request.method == 'POST':
         print("Processing POST request")
@@ -96,9 +104,6 @@ def checkout(request):
     else:
         form = CheckoutForm(initial=initial_data)
 
-    print("stripe_public_key:", stripe_public_key)
-
-    print("stripe_secret_key:", stripe_secret_key)
 
     stripe_total = round(cart_total * 100)
 
