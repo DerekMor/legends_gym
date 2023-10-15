@@ -33,15 +33,54 @@ The **Legends Gym Website** is designed with a clear intent: to encourage indivi
 - Newsletter sign up using Mailchimp form also provided in the footer.\
 - Users with appropriate permissions have a new option on the homwpage to generate discount codes.\
 
-### Features not implemented
+## Features not implemented
 
 - Webhooks is an area that could be improved here but a lot more time would be needed to get a grip on them.
 - More testing both manual and code should also be implemnted
 
 ## Testing
 
-- Site was greatly tested on dev environment but more testing of models and forms on the deployed site would have been better.
-- testing found many bugs with models and views and all that were found were dealt with(most were typos, I will never name my .env file env.py again anyway!)
+### 1. Homepage
+
+- All hompage links are functioning as expected.
+- An option to generate discount codes is only available to those with permission.
+
+### 2. Product List page
+
+- All product display properly at appropriate viewport sizes.
+- Products can be searched and sorted correctly.
+- Products can be added directly to the cart.
+
+### 3. Product Detail Page
+
+- Products can be added to the cart correctly.
+- Users can add or remove products from their wishlists with feedback messages provided.
+- Users can read, add or delete reviews.
+- A user can only delete their own review.
+
+### 4. Generate Discount Code Page
+
+- Only users with permission can visit this page.
+- Single use discount codes can be created to any percentage value.
+
+### 5. Cart Page
+
+- A correct list of items is dislayed here.
+- Removing and updating items updates the cart correctly. 
+- Discount codes can be added and function correctly.
+- Discount percentage is updated in the session data to prevent multiple.
+
+### 6. Checkout Page
+
+- A user with a cart balance of 0 or less cannot access this page.
+- Forms work correctly and checkout will not continue unless neccessary forms filled.
+- Checkout process works as expected and passes data to admin panel and profile pages.
+
+### 7. Profile Page
+- Form upates user data.
+- Profile picture form updates and diplays a profile picture correctly.
+- A users previous orders are dislayed here. A max number should probably be implemented.
+- A user can view their wishlist from here and remove items successfully.
 
 
 ## Deploying a Django Project to Heroku
