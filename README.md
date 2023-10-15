@@ -22,19 +22,20 @@ The **Legends Gym Website** is designed with a clear intent: to encourage indivi
 - As an e-commerce site, users are able to search through the contents as well as sort their searches.\
 - Filtering by category is also available from the main nav bar\
 - Users can click into the full products to see details and add them to their cart.\
-- In the shopping cart page users can update or remove items before moving onto the checkout page.\
+- When a product is clicked users can read or write reviews and also add or remove items from their wishlist.\
+- In the shopping cart page users can update or remove items or add a discount code before moving onto the checkout page.\
 - In the main checkout page users must be logged in to complete their orders\
 - In this page there is a order details form and card payment using Stripe\
 - After a successful checkout a success page is rendered for the users as well as a message using django messages.\
 - Successful orders can be viewed in the admin panel.\
 - Users can also log in and sihn up from the header at any area of the site\
+- Users can also visit their profile page from here to add a profile pic, view previous orders or items in their wishlist.\
 - Newsletter sign up using Mailchimp form also provided in the footer.\
+- Users with appropriate permissions have a new option on the homwpage to generate discount codes.\
 
 ### Features not implemented
 
-- As of writing my main image did not transfer from the dev environment to deployment. Debugging is needed
-- A profile app and nessessary models were created but an individual profile page i ra out of time to impliment these
-- Webhooks is another area that could be improved here but a lot more time would be needed to get a grip on them.
+- Webhooks is an area that could be improved here but a lot more time would be needed to get a grip on them.
 - More testing both manual and code should also be implemnted
 
 ## Testing
