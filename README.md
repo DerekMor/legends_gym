@@ -43,15 +43,80 @@ The **Legends Gym Website** is designed with a clear intent: to encourage indivi
 - Site was greatly tested on dev environment but more testing of models and forms on the deployed site would have been better.
 - testing found many bugs with models and views and all that were found were dealt with(most were typos, I will never name my .env file env.py again anyway!)
 
-## Deployment
 
-- Create new Heroku app
-- link up AWS, ElephantSql
-- Add config vars
-- Link Heroku app to Github repo
-- Click deploy
+## Deploying a Django Project to Heroku
 
-Visual Design Decisions
+### 1. Create a Heroku Account and Log In
+
+- Go to [Heroku](https://www.heroku.com/) and create an account if you don't have one.
+- Log in to your Heroku account.
+
+### 2. Create a New Heroku App
+
+- Click "New" in the Heroku dashboard.
+- Choose "Create new app."
+
+### 3. Name Your App
+
+- Give your app a unique name. 
+
+### 4. Select Your Region
+
+- Choose the region that's most appropriate for you.
+
+### 5. Link Your GitHub Account
+
+- In the "Deployment method" section, connect your app to your GitHub repository.
+
+### 6. Select Repository
+
+- Search for and select your GitHub repository.
+
+### Database Steps
+
+1. Create a Database on a Site of Your Choice
+
+- Choose a database provider.
+- Create a database and copy the database URL.
+
+### Setting Config Variables
+
+- In your Heroku app's settings, add the following config variables:
+  - `AWS_ACCESS_KEY_ID` - Your AWS Access Key
+  - `AWS_SECRET_ACCESS_KEY` - Your AWS Secret Access Key
+  - `DATABASE_URL` - Your PostgreSQL Database URL
+  - `SECRET_KEY` - Your Django Secret Key
+  - `STRIPE_PUBLIC_KEY` - Your Stripe Public Key
+  - `STRIPE_SECRET_KEY` - Your Stripe Secret Key
+  - `USE_AWS` - Set this to "True".
+
+### AWS Setup
+
+1. Go to AWS and Create an Account
+
+- Create an AWS account if you don't have one.
+
+2. Follow These Steps
+
+- Refer to [AWS Changes Sheet (PDF)](https://codeinstitute.s3.amazonaws.com/fullstack/AWS%20changes%20sheet.pdf) for AWS setup. Credit to CodeInstitute for this guide.
+
+### Deployment
+
+1. Enable Automatic Deploys in Heroku
+
+- In Heroku, go to the "Deploy" tab.
+- Enable automatic deploys for your chosen branch (e.g., `main`).
+
+2. Initiate the First Build
+
+- Click "Deploy Branch" to begin the first build.
+
+3. Open Your App
+
+- After the build is finished, click "Open app" to access your deployed Django project.
+
+Your Django project should now be deployed.
+
 
 ## Visual Design Decisions
 This section provides insights into the visual design choices and includes wireframes for both desktop and mobile views.
