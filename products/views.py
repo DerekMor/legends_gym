@@ -53,7 +53,12 @@ def all_products(request):
 def single_product(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     user = request.user
-    wishlist, created = Wishlist.objects.get_or_create(user=user)
+    
+    if user.is_authenticated:
+        wishlist, created = Wishlist.objects.get_or_create(user=user)
+        
+    else:
+        wishlist = None
 
     if request.method == 'POST':
         if 'add_to_wishlist' in request.POST:
