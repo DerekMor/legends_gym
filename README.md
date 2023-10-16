@@ -19,19 +19,19 @@ The **Legends Gym Website** is designed with a clear intent: to encourage indivi
 
 ## Site features
 
-- As an e-commerce site, users are able to search through the contents as well as sort their searches.\
-- Filtering by category is also available from the main nav bar\
-- Users can click into the full products to see details and add them to their cart.\
-- When a product is clicked users can read or write reviews and also add or remove items from their wishlist.\
-- In the shopping cart page users can update or remove items or add a discount code before moving onto the checkout page.\
-- In the main checkout page users must be logged in to complete their orders\
-- In this page there is a order details form and card payment using Stripe\
-- After a successful checkout a success page is rendered for the users as well as a message using django messages.\
-- Successful orders can be viewed in the admin panel.\
-- Users can also log in and sihn up from the header at any area of the site\
-- Users can also visit their profile page from here to add a profile pic, view previous orders or items in their wishlist.\
-- Newsletter sign up using Mailchimp form also provided in the footer.\
-- Users with appropriate permissions have a new option on the homwpage to generate discount codes.\
+- As an e-commerce site, users are able to search through the contents as well as sort their searches.
+- Filtering by category is also available from the main nav bar
+- Users can click into the full products to see details and add them to their cart.
+- When a product is clicked users can read or write reviews and also add or remove items from their wishlist.
+- In the shopping cart page users can update or remove items or add a discount code before moving onto the checkout page.
+- In the main checkout page users must be logged in to complete their orders
+- In this page there is a order details form and card payment using Stripe
+- After a successful checkout a success page is rendered for the users as well as a message using django messages.
+- Successful orders can be viewed in the admin panel.
+- Users can also log in and sihn up from the header at any area of the site
+- Users can also visit their profile page from here to add a profile pic, view previous orders or items in their wishlist.
+- Newsletter sign up using Mailchimp form also provided in the footer.
+- Users with appropriate permissions have a new option on the homwpage to generate discount codes.
 
 ## Features not implemented
 
@@ -41,42 +41,43 @@ The **Legends Gym Website** is designed with a clear intent: to encourage indivi
 ## Testing
 
 ### 1. Homepage
-
+<img src="media/home.png" alt="Homepage screenshot">
 - All hompage links are functioning as expected.
 - An option to generate discount codes is only available to those with permission.
 
 ### 2. Product List page
-
+<img src="media/products.png" alt="Products page screenshot">
 - All product display properly at appropriate viewport sizes.
 - Products can be searched and sorted correctly.
 - Products can be added directly to the cart.
 
 ### 3. Product Detail Page
-
+<img src="media/details.png" alt="Product details page screenshot">
 - Products can be added to the cart correctly.
 - Users can add or remove products from their wishlists with feedback messages provided.
 - Users can read, add or delete reviews.
 - A user can only delete their own review.
 
 ### 4. Generate Discount Code Page
-
+<img src="media/dicount.png" alt="Discount code generator screenshot">
 - Only users with permission can visit this page.
 - Single use discount codes can be created to any percentage value.
 
 ### 5. Cart Page
-
+<img src="media/cart.png" alt="Cart screenshot">
 - A correct list of items is dislayed here.
 - Removing and updating items updates the cart correctly. 
 - Discount codes can be added and function correctly.
 - Discount percentage is updated in the session data to prevent multiple.
 
 ### 6. Checkout Page
-
+<img src="media/checkout.png" alt="Checkout screenshot">
 - A user with a cart balance of 0 or less cannot access this page.
 - Forms work correctly and checkout will not continue unless neccessary forms filled.
 - Checkout process works as expected and passes data to admin panel and profile pages.
 
 ### 7. Profile Page
+<img src="media/profile.png" alt="Profile page screenshot">
 - Form upates user data.
 - Profile picture form updates and diplays a profile picture correctly.
 - A users previous orders are dislayed here. A max number should probably be implemented.
@@ -230,11 +231,12 @@ The website's responsive design ensures that it displays optimally across variou
 The website features a well-structured sitemap and robots.txt file, providing clear instructions to search engine crawlers regarding which pages to index and which to exclude. This ensures that search engines discover and index the most relevant and valuable pages.
 
 ## Digital Marketing
-I had an issue here as the day of writing before the deadline my account was suspended and i know the course said to take screenshots but if i have to redo it i will.
+I have had many issues with facebook banning my account. It will not even let me sign in without appealing at this stage. 
 <img src="media/2023-08-15 (2).png" alt="Account suspended screenshot">\
-I will link the real gyms facebook page I am unsure about whether my account was flagged because I am part of this and was building one with a similar name and images but <a href="https://www.facebook.com/p/D%C3%BAn-Laoghaire-Martial-Arts-100057563164646/"> here</a> it is.\
+I have used the only online editor I could find without having any photoshop skills to produce this.
+<img src="media/mock.png" alt="Facebook mockup screenshot">\
 My own version wasnt huge but I was focusing on organic growth using humour and replying to comments to try to build a relationship with followers then possibly using posts that work for paid ads in the long run.\
-The targeted user was anybody into fitness or looking to join martial arts.\
+The targeted user was anybody into fitness or looking to join martial arts as seen in the post for the intro to boxing class.\
 These users would mostly use facebook or instagram.\
 Posts would help people who need inspiration to get started by offers or exclusive gear.\
 They would recieve these offers by email or social media.\
