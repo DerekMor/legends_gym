@@ -109,7 +109,7 @@ def add_review(request, product_id):
         else:
             Review.objects.create(user=user, product=product, title=title, content=content, rating=rating)
 
-        return redirect('single_product', pk=product_id)
+        return redirect('single_product', product_id=product_id)
 
     return render(request, 'products/add_review.html', {'product': product})
 
@@ -120,7 +120,7 @@ def delete_review(request, product_id, review_id):
     if review.user == request.user:
         review.delete()
 
-    return redirect('single_product', pk=review.product.id)
+    return redirect('single_product', product_id=product_id)
 
 
 @login_required
