@@ -197,5 +197,5 @@ if 'USE_AWS' in os.environ:
 
 # Stripe
 STRIPE_CURRENCY = 'usd'
-STRIPE_PUBLIC_KEY = os.environ['pk_test_51NePQVFgmCeLvFA2hvxuZ4LK9xdxjqvz7teTiNwexwxIeDRwYFVI6O8RHRVeqQnelSkopMiNsnZekpNUGz5qRlnj00DE9yoyc5']
+STRIPE_PUBLIC_KEY = 'pk_test_51NePQVFgmCeLvFA2hvxuZ4LK9xdxjqvz7teTiNwexwxIeDRwYFVI6O8RHRVeqQnelSkopMiNsnZekpNUGz5qRlnj00DE9yoyc5'
 STRIPE_SECRET_KEY = os.environ['STRIPE_SECRET_KEY']
