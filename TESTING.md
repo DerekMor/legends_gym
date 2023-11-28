@@ -6,10 +6,13 @@ Manual tests have been performed and documented to ensure the usability and prop
 
 ## Html Validation
 ### Home page
-<img src="media/homehtml.png" alt="Manual Testing screenshot">
+<img src="media/homehtml.png" alt="Validation Testing screenshot">
 
 ### One time code page
-<img src="media/codehtml.png" alt="Manual Testing screenshot">
+<img src="media/codehtml.png" alt="Validation Testing screenshot">
 
 ### Profile page
-<img src="media/profilehtml.png" alt="Manual Testing screenshot">
+<img src="media/profilehtml.png" alt="Validation Testing screenshot">
+
+### All Products page
+<img src="media/allproductshtml.png" alt="Validation Testing screenshot">
