@@ -53,10 +53,10 @@ def all_products(request):
 def single_product(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     user = request.user
-    
+
     if user.is_authenticated:
         wishlist, created = Wishlist.objects.get_or_create(user=user)
-        
+
     else:
         wishlist = None
 
@@ -77,7 +77,6 @@ def single_product(request, product_id):
     return render(request, 'single_product.html', {'product': product, 'wishlist': wishlist})
 
 
-
 def plans_products(request):
     plans_products = Product.objects.filter(category__name='plans')
 
@@ -87,6 +86,7 @@ def plans_products(request):
     }
 
     return render(request, 'products/products.html', context)
+
 
 @login_required
 def add_review(request, product_id):
@@ -98,7 +98,6 @@ def add_review(request, product_id):
         rating = request.POST['rating']
         user = request.user
 
-        
         existing_review = Review.objects.filter(user=user, product=product).first()
 
         if existing_review:
@@ -112,6 +111,7 @@ def add_review(request, product_id):
         return redirect('single_product', product_id=product_id)
 
     return render(request, 'products/add_review.html', {'product': product})
+
 
 @login_required
 def delete_review(request, product_id, review_id):

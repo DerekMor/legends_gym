@@ -28,12 +28,14 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+
 class Wishlist(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    products = models.ManyToManyField(Product)  
+    products = models.ManyToManyField(Product)
 
     def __str__(self):
         return f"{self.user.username}'s Wishlist"
+
 
 class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -42,6 +44,6 @@ class Review(models.Model):
     content = models.TextField()
     rating = models.IntegerField(choices=((1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5')))
     date_added = models.DateTimeField(auto_now_add=True)
-    
+
     def __str__(self):
         return f"Review by {self.user.username} for {self.product.name}"
