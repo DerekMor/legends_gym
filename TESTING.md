@@ -50,4 +50,16 @@ Here things get a little strange. My forms work spread across two divs like they
 <img src="media/checkoutcss.png" alt="Validation Testing screenshot">
 
 ## Python Validation
-In all cases I could not solve the line too long issue from getting an error using an indent or a \ for an explicit continuation. It told me the new line was under indented until it got so far that it was over indented.
+In all cases I could not solve the line too long issue from getting an error using an indent or a \ for an explicit continuation. It told me the new line was under indented until it got so far that it was over indented so the line too long were left in
+
+### profiles/views.py
+<img src="media/profileview.png" alt="Validation Testing screenshot">
+
+### profiles/urls.py
+<img src="media/profileurls.png" alt="Validation Testing screenshot">
+
+### profiles/signals.py
+<img src="media/profilesignals.png" alt="Validation Testing screenshot">
+
+### profiles/models.py
+<img src="media/profilemodels.png" alt="Validation Testing screenshot">
