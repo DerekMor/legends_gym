@@ -31,7 +31,7 @@
                             {% csrf_token %}
                             <input type="number" name="quantity" value="{{ item.quantity }}" min="1"
                                 style="width: 60px;">
-                            <button type=" submit" class="btn btn-link">Update Cart</button>
+                            <button type="submit" class="btn btn-link">Update Cart</button>
                         </form>
 
                         <form method="post" action="{% url 'remove_from_cart' item.product.id %}">

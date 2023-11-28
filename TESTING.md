@@ -19,3 +19,15 @@ Manual tests have been performed and documented to ensure the usability and prop
 
 ### Single Product page
 <img src="media/singleproducthtml.png" alt="Validation Testing screenshot">
+
+### Add Review page
+<img src="media/reviewhtml.png" alt="Validation Testing screenshot">
+
+### Logout page
+<img src="media/logouthtml.png" alt="Validation Testing screenshot">
+
+### Registration page
+<img src="media/registerhtml.png" alt="Validation Testing screenshot">
+
+### Login page
+<img src="media/loginhtml.png" alt="Validation Testing screenshot">
