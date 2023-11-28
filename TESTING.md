@@ -81,3 +81,16 @@ In all cases I could not solve the line too long issue from getting an error usi
 
 ### home/urls.py
 <img src="media/homeurls.png" alt="Validation Testing screenshot">
+
+### checkout/views.py
+<img src="media/checkoutviews.png" alt="Validation Testing screenshot">
+
+### checkout/urls.py
+<img src="media/checkouturls.png" alt="Validation Testing screenshot">
+
+### checkout/models.py
+<img src="media/checkoutmodels.png" alt="Validation Testing screenshot">
+
+### checkout/admin.py
+<img src="media/checkoutadmin.png" alt="Validation Testing screenshot">
+

@@ -21,9 +21,6 @@ class DiscountCode(models.Model):
         )
 
 
-
-
-
 class Order(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     order_number = models.CharField(max_length=32, null=False, editable=False)
@@ -60,7 +57,7 @@ class Order(models.Model):
             code = DiscountCode.objects.get(code=discount_code, is_active=True, used=False)
             discount_amount = (code.percentage / 100) * self.order_total
             self.order_total -= discount_amount
-            
+   
             code.used = True
             code.save()
             self.save()
@@ -84,11 +81,11 @@ class OrderLineItem(models.Model):
     def __str__(self):
         return f'Order {self.order.order_number} - Product {self.product.name}'
 
+
 class OrderHistory(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     order_date = models.DateTimeField(auto_now_add=True)
-    
+ 
     def __str__(self):
         return f"{self.user.username}'s Order History"
-

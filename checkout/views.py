@@ -11,6 +11,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 import uuid
 from decimal import Decimal
 
+
 @login_required
 def checkout(request):
     print("Entering checkout view")
@@ -35,7 +36,6 @@ def checkout(request):
         cart_total += subtotal
 
     cart_total = request.session.get('cart_total')
-
 
     if cart_total <= 0:
         messages.error(request, 'Your cart is empty or the total is zero.')
@@ -92,7 +92,7 @@ def checkout(request):
                     customer.save()
 
                 messages.success(request, 'Order successfully placed!')
-                order.save()  
+                order.save()
                 return checkout_success(request, order.order_number)
             else:
                 messages.error(
@@ -104,7 +104,6 @@ def checkout(request):
     else:
         form = CheckoutForm(initial=initial_data)
 
-
     stripe_total = round(cart_total * 100)
 
     stripe.api_key = stripe_secret_key
@@ -113,7 +112,6 @@ def checkout(request):
         currency=settings.STRIPE_CURRENCY,
     )
     print(intent)
-
 
     context = {
         'form': form,
@@ -141,7 +139,6 @@ def checkout_success(request, order_number):
     }
 
     return render(request, template, context)
-
 
 
 @login_required
