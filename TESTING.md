@@ -72,3 +72,12 @@ In all cases I could not solve the line too long issue from getting an error usi
 
 ### products/models.py
 <img src="media/productsmodels.png" alt="Validation Testing screenshot">
+
+### legends_gym/urls.py
+<img src="media/legendsurls.png" alt="Validation Testing screenshot">
+
+### home/views.py
+<img src="media/homeviews.png" alt="Validation Testing screenshot">
+
+### home/urls.py
+<img src="media/homeurls.png" alt="Validation Testing screenshot">
