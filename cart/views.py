@@ -57,8 +57,7 @@ def remove_from_cart(request, product_id):
         request.session['cart'] = cart
         request.session.save()
         messages.success(request, "Item removed from your cart.")
-    else:
-        
+    else:   
         messages.error(request, "Item not found in your cart.")
 
     return redirect('view_cart')
@@ -77,7 +76,7 @@ def update_cart(request, product_id):
 
     return redirect('view_cart')
 
-   
+ 
 
 def apply_discount_code(request):
     if request.method == 'POST':
