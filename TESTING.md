@@ -31,3 +31,13 @@ Manual tests have been performed and documented to ensure the usability and prop
 
 ### Login page
 <img src="media/loginhtml.png" alt="Validation Testing screenshot">
+
+### Cart page
+<img src="media/carthtml.png" alt="Validation Testing screenshot">
+
+### Checkout page
+Here things get a little strange. My forms work spread across two divs like they are supposed to. The form will not submit if neither form is filled out and the payment section is side by side with the details form which is more visually appealing on larger screens. If I was to change the tags to fix these errors the form will work but the payment section will be in the same column as the details which is fine on mobile or the two forms will be independent and one can submit without the other being filled out. Because of this I am leaving it the way it is as the page is working the way it is supposed to over all screen sizes and page layouts.
+<img src="media/checkouthtml.png" alt="Validation Testing screenshot">
+
+### Checkout Success page
+<img src="media/successhtml.png" alt="Validation Testing screenshot">
