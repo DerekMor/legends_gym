@@ -1,7 +1,7 @@
 # Testing Documentation
 
 ## Manual Testing
-Manual tests have been performed and documented to ensure the usability and proper function of the website. This testing involved trying multiple options on each page to try to find if any of the website functions were not working as expected. These were all documented in Github annd the list can be found <a href="https://legends-gym-b229ec203712.herokuapp.com/"> HERE </a>. <br> An example of manual testing of one of the pages on the site can seen below.
+Manual tests have been performed and documented to ensure the usability and proper function of the website. This testing involved trying multiple options on each page to try to find if any of the website functions were not working as expected. These were all documented in Github annd the list can be found <a href="https://github.com/DerekMor/legends_gym/issues?q=+label%3ATest+"> HERE </a>. <br> An example of manual testing of one of the pages on the site can seen below.
 <img src="media/manual.png" alt="Manual Testing screenshot">
 
 ## Html Validation
@@ -41,3 +41,13 @@ Here things get a little strange. My forms work spread across two divs like they
 
 ### Checkout Success page
 <img src="media/successhtml.png" alt="Validation Testing screenshot">
+
+## CSS Validation
+### base.css
+<img src="media/basecss.png" alt="Validation Testing screenshot">
+
+### checkout.css
+<img src="media/checkoutcss.png" alt="Validation Testing screenshot">
+
+## Python Validation
+In all cases I could not solve the line too long issue from getting an error using an indent or a \ for an explicit continuation. It told me the new line was under indented until it got so far that it was over indented.

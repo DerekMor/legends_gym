@@ -9,7 +9,6 @@ from decimal import Decimal
 def view_cart(request):
     cart = request.session.get('cart', {})
     cart_items = []
-    
 
     cart_total = Decimal('0.00')
 

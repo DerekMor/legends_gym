@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from checkout.models import Order
 from products.models import Wishlist
 
+
 # Create your views here.
 @login_required
 def profile(request):
@@ -13,7 +14,7 @@ def profile(request):
     wishlist, _ = Wishlist.objects.get_or_create(user=user_profile.user)
 
     orders = Order.objects.filter(customer=user_profile).order_by('-date')
-    
+
     if request.method == 'POST':
         form = UserProfileForm(request.POST, instance=user_profile)
         profile_picture_form = ProfilePictureForm(request.POST, request.FILES, instance=user_profile)

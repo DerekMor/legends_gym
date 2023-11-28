@@ -39,50 +39,7 @@ The **Legends Gym Website** is designed with a clear intent: to encourage indivi
 - More testing both manual and code should also be implemnted
 
 ## Testing
-
-### 1. Homepage
-<img src="media/home.png" alt="Homepage screenshot">
-- All hompage links are functioning as expected.
-- An option to generate discount codes is only available to those with permission.
-
-### 2. Product List page
-<img src="media/products.png" alt="Products page screenshot">
-- All product display properly at appropriate viewport sizes.
-- Products can be searched and sorted correctly.
-- Products can be added directly to the cart.
-
-### 3. Product Detail Page
-<img src="media/details.png" alt="Product details page screenshot">
-- Products can be added to the cart correctly.
-- Users can add or remove products from their wishlists with feedback messages provided.
-- Users can read, add or delete reviews.
-- A user can only delete their own review.
-
-### 4. Generate Discount Code Page
-<img src="media/dicount.png" alt="Discount code generator screenshot">
-- Only users with permission can visit this page.
-- Single use discount codes can be created to any percentage value.
-
-### 5. Cart Page
-<img src="media/cart.png" alt="Cart screenshot">
-- A correct list of items is dislayed here.
-- Removing and updating items updates the cart correctly. 
-- Discount codes can be added and function correctly.
-- Discount percentage is updated in the session data to prevent multiple.
-
-### 6. Checkout Page
-<img src="media/checkout.png" alt="Checkout screenshot">
-- A user with a cart balance of 0 or less cannot access this page.
-- Forms work correctly and checkout will not continue unless neccessary forms filled.
-- Checkout process works as expected and passes data to admin panel and profile pages.
-
-### 7. Profile Page
-<img src="media/profile.png" alt="Profile page screenshot">
-- Form upates user data.
-- Profile picture form updates and diplays a profile picture correctly.
-- A users previous orders are dislayed here. A max number should probably be implemented.
-- A user can view their wishlist from here and remove items successfully.
-
+Due to the large amount of images from validation tests all testing documentation can be found in the <a href="https://github.com/DerekMor/legends_gym/blob/main/TESTING.md">TESTING.md </a>file.
 
 ## Deploying a Django Project to Heroku
 
