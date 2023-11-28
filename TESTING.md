@@ -16,3 +16,6 @@ Manual tests have been performed and documented to ensure the usability and prop
 
 ### All Products page
 <img src="media/allproductshtml.png" alt="Validation Testing screenshot">
+
+### Single Product page
+<img src="media/singleproducthtml.png" alt="Validation Testing screenshot">
