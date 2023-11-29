@@ -103,3 +103,6 @@ In all cases I could not solve the line too long issue from getting an error usi
 ### cart/contexts.py
 <img src="media/cartcontexts.png" alt="Validation Testing screenshot">
 
+## Accessibility
+Lighthouse in the Google Chrome browser was used to assess the accessibility of each page of the website. All pages came in with a score of between 88 and 92 all having the same message. "Background and foreground colors do not have a sufficient contrast ratio." And though I do not see an issue it is important to think of visually impared people so this is an issue that can be addressed at a later date.
+<img src="media/lighthouse.png" alt="Lighthouse Testing screenshot">

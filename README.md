@@ -115,6 +115,7 @@ Due to the large amount of images from validation tests all testing documentatio
 Your Django project should now be deployed.
 
 
+
 ## Visual Design Decisions
 This section provides insights into the visual design choices and includes wireframes for both desktop and mobile views.
 
