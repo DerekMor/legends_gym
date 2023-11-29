@@ -33,6 +33,33 @@ The **Legends Gym Website** is designed with a clear intent: to encourage indivi
 - Newsletter sign up using Mailchimp form also provided in the footer.
 - Users with appropriate permissions have a new option on the homwpage to generate discount codes.
 
+## Security
+
+### Secure Payments with Stripe
+
+Legends Gym prioritizes secure payment processing to ensure the safety of our users' financial information. We use Stripe, a trusted and widely-used payment gateway, to handle all transactions securely.
+
+#### Key Security Measures with Stripe:
+
+- **Encryption:** All payment information entered on our platform is encrypted using SSL/TLS protocols, ensuring secure transmission over the internet.
+  
+- **Tokenization:** Credit card details are tokenized by Stripe, meaning sensitive information is never stored on our servers. Instead, we utilize Stripe's tokens to process payments securely.
+
+- **Secure Checkout:** Our checkout process is embedded with Stripe's secure elements, ensuring a seamless yet secure payment experience for our users.
+
+### Secure Login with Allauth
+
+At Legends Gym, we understand the importance of protecting user accounts and personal information. To ensure secure user authentication and registration, we utilize the Allauth package in Django.
+
+#### Features and Security Measures of Allauth:
+
+- **User Authentication:** Allauth provides robust user authentication functionalities, including login, logout, and registration, with built-in protections against common security threats like brute force attacks.
+
+- **Password Management:** Allauth incorporates secure password management features such as password hashing, password reset with verification, and password strength validation.
+
+- **Email Confirmation:** Email verification and confirmation processes are enforced to ensure the validity of user accounts and prevent unauthorized access.
+
+
 ## Features not implemented
 
 - Webhooks is an area that could be improved here but a lot more time would be needed to get a grip on them.
