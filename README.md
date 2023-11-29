@@ -43,77 +43,37 @@ Due to the large amount of images from validation tests all testing documentatio
 
 ## Deploying a Django Project to Heroku
 
-### 1. Create a Heroku Account and Log In
+1. **ElephantSQL Setup:**
+   - Create a new instance in ElephantSQL, choosing a suitable plan and configuring the database settings.
+   - Retrieve the database URL from the ElephantSQL dashboard and set it as an environmental variable in your development environment.
 
-- Go to [Heroku](https://www.heroku.com/) and create an account if you don't have one.
-- Log in to your Heroku account.
+2. **AWS S3 Bucket Setup:**
+   - Refer to [AWS Changes Sheet (PDF)](https://codeinstitute.s3.amazonaws.com/fullstack/AWS%20changes%20sheet.pdf) for AWS setup. Credit to CodeInstitute for this guide.
 
-### 2. Create a New Heroku App
+3. **AWS Identify and Access Management (IAM) Setup:**
+   - Set up IAM roles and policies to grant necessary permissions for AWS services.
+   - Create access keys and configure them in your Django project.
 
-- Click "New" in the Heroku dashboard.
-- Choose "Create new app."
+4. **Connect AWS to the Project:**
+   - Install necessary Python packages (`boto3` and `django-storages`) for AWS integration.
+   - Set up configurations in your Django project's settings file to enable AWS S3 usage for static and media files.
+   - Add AWS-related environment variables (`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, etc.) to your Heroku app's config vars.
 
-### 3. Name Your App
+5. **Stripe Payments:**
+   - Follow Stripe's documentation to set up payment processing for your application.
+   - Retrieve API keys (`STRIPE_PUBLIC_KEY` and `STRIPE_SECRET_KEY`) from the Stripe Dashboard.
+   - Add these keys to your Django settings and also set them as config vars in your Heroku app.
 
-- Give your app a unique name. 
+6. **Development Deployment:**
+   - Set up a local development environment, including installing dependencies from `requirements.txt`.
+   - Configure environment variables in an `env.py` file for local development.
+   - Apply migrations, create a superuser, and start the local server to test the application.
 
-### 4. Select Your Region
-
-- Choose the region that's most appropriate for you.
-
-### 5. Link Your GitHub Account
-
-- In the "Deployment method" section, connect your app to your GitHub repository.
-
-### 6. Select Repository
-
-- Search for and select your GitHub repository.
-
-### Database Steps
-
-1. Create a Database on a Site of Your Choice
-
-- Choose a database provider.
-- Create a database and copy the database URL.
-
-### Setting Config Variables
-
-- In your Heroku app's settings, add the following config variables:
-  - `AWS_ACCESS_KEY_ID` - Your AWS Access Key
-  - `AWS_SECRET_ACCESS_KEY` - Your AWS Secret Access Key
-  - `DATABASE_URL` - Your PostgreSQL Database URL
-  - `SECRET_KEY` - Your Django Secret Key
-  - `STRIPE_PUBLIC_KEY` - Your Stripe Public Key
-  - `STRIPE_SECRET_KEY` - Your Stripe Secret Key
-  - `USE_AWS` - Set this to "True".
-
-### AWS Setup
-
-1. Go to AWS and Create an Account
-
-- Create an AWS account if you don't have one.
-
-2. Follow These Steps
-
-- Refer to [AWS Changes Sheet (PDF)](https://codeinstitute.s3.amazonaws.com/fullstack/AWS%20changes%20sheet.pdf) for AWS setup. Credit to CodeInstitute for this guide.
-
-### Deployment
-
-1. Enable Automatic Deploys in Heroku
-
-- In Heroku, go to the "Deploy" tab.
-- Enable automatic deploys for your chosen branch (e.g., `main`).
-
-2. Initiate the First Build
-
-- Click "Deploy Branch" to begin the first build.
-
-3. Open Your App
-
-- After the build is finished, click "Open app" to access your deployed Django project.
-
-Your Django project should now be deployed.
-
+7. **Production Deployment (Heroku):**
+   - Create a Heroku account if you haven't already.
+   - Create a new Heroku app and connect it to your GitHub repository for deployment.
+   - Configure environment variables (`Config Vars`) in your Heroku app settings using the same keys as in your Django settings.
+   - Deploy the application manually through the Heroku dashboard and monitor the deployment process.
 
 
 ## Visual Design Decisions
