@@ -59,6 +59,24 @@ At Legends Gym, we understand the importance of protecting user accounts and per
 
 - **Email Confirmation:** Email verification and confirmation processes are enforced to ensure the validity of user accounts and prevent unauthorized access.
 
+## Data Handling and Storage
+
+### User Profiles and Personal Details
+
+Legends Gym stores user profile information, including personal details for orders, securely using a combination of databases and cloud storage.
+
+#### ElephantSQL for Personal Details
+
+- **Storage of Order Information:** Personal details related to user orders, such as full name, email, phone number, address, and order history, are stored in ElephantSQL, a cloud-based PostgreSQL database service.
+
+- **Security Measures:** The ElephantSQL database is configured securely, with appropriate access controls and encryption, to protect the confidentiality and integrity of user information. Passwords are hashed and sensitive data is stored with encryption measures in place.
+
+### AWS S3 for Profile Pictures
+
+- **Storage of Profile Pictures:** Profile pictures uploaded by users are securely stored in Amazon Web Services (AWS) Simple Storage Service (S3).
+
+- **Security Measures:** AWS S3 implements robust security measures, including encryption in transit and at rest, to safeguard profile pictures from unauthorized access. 
+
 
 ## Features not implemented
 
